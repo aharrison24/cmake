@@ -401,6 +401,7 @@ void cmExtraEclipseCDT4Generator::CreateProjectFile()
     }
   fout <<
     "org.eclipse.cdt.core.MakeErrorParser;"
+    "org.eclipse.cdt.core.GmakeErrorParser;"
     "org.eclipse.cdt.core.GCCErrorParser;"
     "org.eclipse.cdt.core.GASErrorParser;"
     "org.eclipse.cdt.core.GLDErrorParser;"
@@ -693,6 +694,10 @@ void cmExtraEclipseCDT4Generator::CreateCProjectFile() const
     else if (systemName == "Darwin")
       {
       fout << "<extension id=\"org.eclipse.cdt.core.MachO\""
+              " point=\"org.eclipse.cdt.core.BinaryParser\">\n"
+              "<attribute key=\"c++filt\" value=\"c++filt\"/>\n"
+              "</extension>\n"
+              "<extension id=\"org.eclipse.cdt.core.MachO64\""
               " point=\"org.eclipse.cdt.core.BinaryParser\">\n"
               "<attribute key=\"c++filt\" value=\"c++filt\"/>\n"
               "</extension>\n"
