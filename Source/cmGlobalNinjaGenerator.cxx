@@ -495,16 +495,12 @@ void cmGlobalNinjaGenerator
                  cmMakefile *mf,
                  bool optional)
 {
-  std::string path;
+  this->cmGlobalGenerator::EnableLanguage(languages, mf, optional);
   for(std::vector<std::string>::const_iterator l = languages.begin();
       l != languages.end(); ++l)
     {
-    std::vector<std::string> language;
-    language.push_back(*l);
-
     if(*l == "NONE")
       {
-      this->cmGlobalGenerator::EnableLanguage(language, mf, optional);
       continue;
       }
     else if(*l == "Fortran")
@@ -551,7 +547,6 @@ void cmGlobalNinjaGenerator
           }
         }
       }
-    this->cmGlobalGenerator::EnableLanguage(language, mf, optional);
     this->ResolveLanguageCompiler(*l, mf, optional);
     }
 }
